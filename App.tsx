@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react';
 
 import symbolOn from './assets/pictures/symbol-on.png';
 import symbolOff from './assets/pictures/symbol-off.png';
@@ -6,12 +7,15 @@ import symbolOff from './assets/pictures/symbol-off.png';
 
 export default function App() {
 
-  let isActive = true;
+  const [isActive, setisActive] = useState(true)
 
-  function handleSingle(){
-    isActive = !isActive;
+  function handleSingle() {
 
+    setisActive((oldValue: boolean) => {
+     return !oldValue
+    })
   }
+
   return (
     <View style={isActive ? styles.containerOn : styles.containerOff}>
       <TouchableOpacity onPress={handleSingle}>
